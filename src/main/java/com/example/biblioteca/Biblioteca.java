@@ -2,6 +2,7 @@ package com.example.biblioteca;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Biblioteca {
 	private List<Livro> livros = new ArrayList<>();
@@ -12,5 +13,11 @@ public class Biblioteca {
 	
 	public List<Livro> listarLivros(){
 		return new ArrayList<>(livros);
+	}
+	
+	public List<Livro> buscaPorAutor(String autor) {
+		return livros.stream()
+				.filter(livro -> livro.getAutor().equalsIgnoreCase(autor))
+				.collect(Collectors.toList());
 	}
 }
